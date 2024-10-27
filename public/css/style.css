@@ -1,0 +1,113 @@
+
+body{
+  background-color: pink;
+  margin: 0;
+   font-family: "Plus Jakarta Sans", sans-serif;
+}
+#mainheading{
+  background-color:darkolivegreen;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main{
+  display: flex;
+  flex-direction: column;
+}
+#img{
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+}
+#heading-info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+/* navbar */
+
+.navbar{
+  height: 5rem;
+  background-color: aliceblue;
+}
+.fa-compass{
+  color:#A8D5BA;
+  font-size: 25px;
+}
+.nav-link{
+color: #222222 !important;
+}
+
+
+/* footer */
+.f-info-links{
+margin-top: 25px;
+}
+.f-info-links a{
+    text-decoration:none ;
+    color: #222222;
+}
+.f-info-links a:hover{
+    text-decoration:underline ;
+}
+.f-info{
+  display: flex;
+  flex-direction: column;
+  height: 7rem;
+  background-color: #ebebeb;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items:center;
+  font-size: 15px;
+}
+.f-info-socials{
+  display: flex;
+  gap: 10px;
+}
+.f-info-socials i{
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+/* card Component */
+.row{
+  display: flex;
+  justify-content: center;
+}
+.card{
+  border: none !important;
+
+}
+
+.img-container {
+  height: 15rem; /* Set the height you want for images */
+  overflow: hidden; /* Ensures images don’t exceed container bounds */
+  border-radius: 1rem;
+}
+
+.card-img-top {
+  height: 100%; /* Ensures image fills the container height */
+  width: 100%; /* Ensures image fills the container width */
+  object-fit: cover; /* Keeps the image’s aspect ratio while filling container */
+}
+
+.card-body .btn {
+  position: absolute;
+  bottom: 0;
+}
+
+
+/* card Effects */
+.card{
+  opacity: 1;
+  cursor: pointer;
+}
+.card:hover{
+  opacity: 0.8;
+  background-color: white;
+}
