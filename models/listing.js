@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Review = require("./review");  // Import the Review model
 
 const listingSchema = new mongoose.Schema({
   title: {
@@ -22,7 +23,29 @@ const listingSchema = new mongoose.Schema({
   price: Number,
   location: String,
   country: String,
+  reviews: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Review",  // This refers to the Review model
+    },
+  ],
 });
 
+listingSchema.post("findOneAndDelete", async function (doc) {
+  if (doc) {
+    await Review.deleteMany({
+      _id: {
+        $in: doc.reviews,
+      },
+    });
+  }
+})
+
+
+
 const Listing = mongoose.model("Listing", listingSchema);
+
 module.exports = Listing;
+
+
+

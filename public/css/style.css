@@ -1,8 +1,13 @@
 
-body{
-  background-color: pink;
+body, .main{
   margin: 0;
    font-family: "Plus Jakarta Sans", sans-serif;
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+}
+.container{
+  flex: 1;
 }
 #mainheading{
   background-color:darkolivegreen;
@@ -15,18 +20,33 @@ body{
   display: flex;
   flex-direction: column;
 }
-#img{
-  width: 300px;
-  height: 300px;
-  border-radius: 10px;
-}
 #heading-info{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+#info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#show-img{
+  width: 500px;
+  height: 300px;
+  border-radius: 20px;
+}
+#show-btns{
+  display: flex;
+  gap: 20px;
+}
 
-
+#pricelocation{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
 
 /* navbar */
 
@@ -79,8 +99,9 @@ margin-top: 25px;
   display: flex;
   justify-content: center;
 }
-.card{
+.listing-card{
   border: none !important;
+    cursor: pointer;
 
 }
 
@@ -96,18 +117,22 @@ margin-top: 25px;
   object-fit: cover; /* Keeps the image’s aspect ratio while filling container */
 }
 
-.card-body .btn {
+.card-body.btn {
   position: absolute;
   bottom: 0;
 }
 
 
 /* card Effects */
-.card{
-  opacity: 1;
-  cursor: pointer;
-}
-.card:hover{
+.listing-card:hover{
   opacity: 0.8;
   background-color: white;
+}
+
+
+/* errors */
+.alert{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
