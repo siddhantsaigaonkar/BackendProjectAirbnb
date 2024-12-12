@@ -17,7 +17,8 @@ app.use(express.urlencoded({extended:true}))
 app.use(methodOverride("_method"))
 app.engine("ejs", ejsMate)
  
-const MONGO_URL = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/wanderlust";
+
+let MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 main()
   .then(() => {
     console.log(`connected to DB`);
@@ -49,7 +50,9 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("listings/errors", { err });
 })
 
-app.listen(port, () => {
-  console.log(`app is running on port no ${port}`);
+// app.listen(port, () => {
+//   console.log(`app is running on port no ${port}`);
   
-})
+// })
+
+module.exports = app;
