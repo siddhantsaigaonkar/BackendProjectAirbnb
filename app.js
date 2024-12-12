@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -9,7 +11,9 @@ const ExpressError = require("./utils/ExpressErr");
 const listings = require("./routes/listing")
 const reviews = require("./routes/review")
 
-// ejs 
+
+
+// ejs
 app.set("view engine", "ejs")
 app.set("views", path.join(__dirname, "views"))
 app.use(express.static(path.join(__dirname, "public")))
@@ -53,3 +57,5 @@ app.listen(port, () => {
   console.log(`app is running on port no ${port}`);
   
 })
+
+module.exports = app;
