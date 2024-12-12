@@ -5,9 +5,9 @@ const port = 8000;
 const path = require("path")
 const methodOverride = require("method-override")
 const ejsMate = require("ejs-mate");
-const ExpressError = require("./utils/ExpressErr");
-const listings = require("./routes/listing")
-const reviews = require("./routes/review")
+const ExpressError = require("../utils/ExpressErr");
+const listings = require("../routes/listing")
+const reviews = require("../routes/review")
 
 // ejs 
 app.set("view engine", "ejs")
@@ -17,8 +17,7 @@ app.use(express.urlencoded({extended:true}))
 app.use(methodOverride("_method"))
 app.engine("ejs", ejsMate)
  
-
-let MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+const MONGO_URL = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/wanderlust";
 main()
   .then(() => {
     console.log(`connected to DB`);
@@ -50,9 +49,9 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("listings/errors", { err });
 })
 
-// app.listen(port, () => {
-//   console.log(`app is running on port no ${port}`);
+app.listen(port, () => {
+  console.log(`app is running on port no ${port}`);
   
-// })
+})
 
 module.exports = app;
