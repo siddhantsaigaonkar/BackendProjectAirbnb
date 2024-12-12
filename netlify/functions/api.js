@@ -1,3 +1,7 @@
+require('dotenv').config();
+
+import { Router } from 'express';
+const router = Router();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -5,11 +9,13 @@ const port = 8000;
 const path = require("path")
 const methodOverride = require("method-override")
 const ejsMate = require("ejs-mate");
-const ExpressError = require("../utils/ExpressErr");
-const listings = require("../routes/listing")
-const reviews = require("../routes/review")
+const ExpressError = require("../../utils/ExpressErr");
+const listings = require("../../routes/listing")
+const reviews = require("../../routes/review")
+import Serverless from 'serverless-http';
 
-// ejs 
+
+// ejs
 app.set("view engine", "ejs")
 app.set("views", path.join(__dirname, "views"))
 app.use(express.static(path.join(__dirname, "public")))
@@ -31,10 +37,10 @@ async function main() {
 
 // listings
 
-app.use("/listings", listings)
+router.use("/listings", listings)
 
 // reviews
-app.use("/listings/:id/reviews", reviews)
+router.use("/listings/:id/reviews", reviews)
 
 
 app.all("*", (req,res,next) => {
@@ -49,9 +55,9 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("listings/errors", { err });
 })
 
-app.listen(port, () => {
-  console.log(`app is running on port no ${port}`);
+// app.listen(port, () => {
+//   console.log(`app is running on port no ${port}`);
   
-})
+// })
 
-module.exports = app;
+export const handler = Serverless(app);
