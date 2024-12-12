@@ -1,5 +1,11 @@
 {
   "version": 2,
+  "builds": [
+    {
+      "src": "app.js",
+      "use": "@vercel/node"
+    }
+  ],
   "routes": [
     {
       "src": "/(.*)",
@@ -10,3 +16,4 @@
     "MONGO_URL": "mongodb+srv://Cluster0:Sid%4012115@cluster0.8a2gj.mongodb.net/wanderlust?retryWrites=true&w=majority"
   }
 }
+
